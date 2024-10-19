@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ventela_shop/components/shop_tile.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -55,6 +56,14 @@ class _ShopPageState extends State<ShopPage> {
             ],
           ),
         ),
+        const SizedBox(
+          height: 10,
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemBuilder: (context, index) => const ShopTile(),
+          ),
+        )
         //card (tampilan sepatu)
       ],
     );

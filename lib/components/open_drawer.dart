@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ventela_shop/models/about_page.dart';
+import 'package:ventela_shop/pages/about_page.dart';
 import 'package:ventela_shop/pages/home_page.dart';
 
 class OpenDrawer extends StatelessWidget {

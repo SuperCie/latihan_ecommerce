@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+// ignore: must_be_immutable
 class BottomNav extends StatelessWidget {
   void Function(int)? onTabChange;
   BottomNav({super.key, required this.onTabChange});
@@ -20,7 +21,7 @@ class BottomNav extends StatelessWidget {
           tabActiveBorder: Border.all(color: const Color(0xFFECEFF1)),
           tabBackgroundColor: Colors.grey.shade100,
           onTabChange: (value) => onTabChange!(value),
-          tabs: [
+          tabs: const [
             GButton(
               iconActiveColor: Colors.black,
               textColor: Colors.black,
