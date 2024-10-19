@@ -36,12 +36,14 @@ class OpenDrawer extends StatelessWidget {
                 "Home Page",
                 style: TextStyle(color: Colors.black, fontSize: 18),
               ),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const HomePage(),
-                ),
-              ),
+              onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                  );
+              }
             ),
           ),
           const SizedBox(
@@ -55,11 +57,15 @@ class OpenDrawer extends StatelessWidget {
                 "About",
                 style: TextStyle(color: Colors.black, fontSize: 18),
               ),
-              onTap: () => Navigator.push(
-                  context,
+              onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context,
                   MaterialPageRoute(
                     builder: (context) => const AboutPage(),
-                  )),
+                  ),
+                  );
+              } 
+
             ),
           ),
         ],

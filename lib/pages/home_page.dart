@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ventela_shop/components/nav_bar.dart';
 import 'package:ventela_shop/components/open_drawer.dart';
+import 'package:ventela_shop/pages/cart_page.dart';
+import 'package:ventela_shop/pages/shop_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,9 +12,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  void navigationBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List<Widget> _pages = [const ShopPage(), const CartPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFD6D6D6),
       // membuat bagian drawer
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -19,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         leading: Builder(
           builder: (context) {
             return Padding(
-              padding: const EdgeInsets.only(left: 20, top: 15),
+              padding: const EdgeInsets.only(left: 16, top: 10),
               child: IconButton(
                 onPressed: () => Scaffold.of(context).openDrawer(),
                 icon: const Icon(
@@ -32,15 +45,11 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: const OpenDrawer(),
-      // bagian search bar
 
-      // bagian card di tengah
-
-      // bagian bottom navigation bar(menggunakan google nav bar)
-
-      // bottom homepage navigation
-
-      // bottom cart navigation
+      bottomNavigationBar: BottomNav(
+        onTabChange: (index) => navigationBar(index),
+      ),
+      body: _pages[_selectedIndex],
     );
   }
 }

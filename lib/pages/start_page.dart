@@ -7,7 +7,7 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFECEFF1),
+      backgroundColor: const Color(0xFFD6D6D6),
       body: Padding(
         padding: const EdgeInsets.all(35.0),
         child: Center(
@@ -37,7 +37,7 @@ class FirstPage extends StatelessWidget {
               const Text(
                 'Indonesia high quality shoes brand with international design',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey, fontSize: 18),
+                style: TextStyle(color: Colors.black45, fontSize: 18),
               ),
               const SizedBox(
                 height: 50,
