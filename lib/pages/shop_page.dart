@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ventela_shop/components/shop_tile.dart';
+import 'package:ventela_shop/data/cart.dart';
+import 'package:ventela_shop/data/shoe.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -11,61 +14,76 @@ class ShopPage extends StatefulWidget {
 class _ShopPageState extends State<ShopPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      // search bar
-      children: [
-        Container(
-          padding: const EdgeInsets.all(12),
-          margin: const EdgeInsets.symmetric(horizontal: 25),
-          decoration: BoxDecoration(
-              color: Colors.grey[200], borderRadius: BorderRadius.circular(12)),
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Search Your Shoes",
-                style: TextStyle(fontSize: 16),
-              ),
-              Icon(Icons.search)
-            ],
+    return Consumer<Cart>(
+      builder: (context, value, child) => Column(
+        // search bar
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            margin: const EdgeInsets.symmetric(horizontal: 25),
+            decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(12)),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Search Your Shoes",
+                  style: TextStyle(fontSize: 16),
+                ),
+                Icon(Icons.search)
+              ],
+            ),
           ),
-        ),
-        // text
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 25),
-          child: Text(
-            "Ventela - Comfort Meets Style",
-            style: TextStyle(fontSize: 14),
+          // text
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 25),
+            child: Text(
+              "Ventela - Comfort Meets Style",
+              style: TextStyle(fontSize: 14),
+            ),
           ),
-        ),
-        // text
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              const Text(
-                "HOT PICKS🔥",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-              Text(
-                "See All",
-                style: TextStyle(fontSize: 14, color: Colors.blue.shade600),
-              ),
-            ],
+          // text
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const Text(
+                  "HOT PICKS🔥",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                Text(
+                  "See All",
+                  style: TextStyle(fontSize: 14, color: Colors.blue.shade600),
+                ),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemBuilder: (context, index) => const ShopTile(),
+          const SizedBox(
+            height: 10,
           ),
-        )
-        //card (tampilan sepatu)
-      ],
+          Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                Shoe shoe = value.getShoeList()[index];
+                return ShopTile(
+                  shoe: shoe,
+                );
+              },
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: Divider(
+              color: Colors.transparent,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

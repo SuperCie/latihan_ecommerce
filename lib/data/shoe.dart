@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
-
-class shoe {
+class Shoe {
   final String name;
-  final double price;
+  final String price;
   final String description;
-  final String imagepath;
+  final String imagePath;
 
-  shoe(
+  Shoe(
       {required this.name,
       required this.price,
       required this.description,
-      required this.imagepath});
+      required this.imagePath});
 }
