@@ -73,7 +73,7 @@ flutter:
     - assets/images/Ventela Reborn Low Reflective.jpg
     - assets/images/Ventela Republic Low Black Gum.jpg
     - assets/images/Ventela Icon Black.jpg
-
+    - assets/images/perusahaan.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

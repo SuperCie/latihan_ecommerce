@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ventela_shop/pages/about_page.dart';
+import 'package:ventela_shop/pages/cart_page.dart';
 import 'package:ventela_shop/pages/home_page.dart';
 
 class OpenDrawer extends StatelessWidget {
@@ -28,23 +29,23 @@ class OpenDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25),
             child: ListTile(
-              leading: const Icon(
-                Icons.home,
-                color: Colors.black,
-              ),
-              title: const Text(
-                "Home Page",
-                style: TextStyle(color: Colors.black, fontSize: 18),
-              ),
-              onTap: () {
+                leading: const Icon(
+                  Icons.home,
+                  color: Colors.black,
+                ),
+                title: const Text(
+                  "Home Page",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+                onTap: () {
                   Navigator.pop(context);
-                  Navigator.push(context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
-                  ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
                   );
-              }
-            ),
+                }),
           ),
           const SizedBox(
             height: 10,
@@ -52,21 +53,20 @@ class OpenDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25),
             child: ListTile(
-              leading: const Icon(Icons.info, color: Colors.black),
-              title: const Text(
-                "About",
-                style: TextStyle(color: Colors.black, fontSize: 18),
-              ),
-              onTap: () {
+                leading: const Icon(Icons.info, color: Colors.black),
+                title: const Text(
+                  "About",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+                onTap: () {
                   Navigator.pop(context);
-                  Navigator.push(context,
-                  MaterialPageRoute(
-                    builder: (context) => const AboutPage(),
-                  ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AboutPage(),
+                    ),
                   );
-              } 
-
-            ),
+                }),
           ),
         ],
       ),

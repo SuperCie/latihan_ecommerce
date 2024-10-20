@@ -3,12 +3,13 @@ import 'package:ventela_shop/data/shoe.dart';
 
 class ShopTile extends StatelessWidget {
   Shoe shoe;
-  ShopTile({super.key, required this.shoe});
+  void Function()? ontap;
+  ShopTile({super.key, required this.shoe, required this.ontap});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 25),
+      margin: const EdgeInsets.only(left: 25),
       width: 290,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -55,16 +56,19 @@ class ShopTile extends StatelessWidget {
                     )
                   ],
                 ),
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: const BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(12),
-                          bottomRight: Radius.circular(12))),
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: ontap,
+                  child: Container(
+                    padding: const EdgeInsets.all(14),
+                    decoration: const BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12))),
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
                   ),
                 )
               ],

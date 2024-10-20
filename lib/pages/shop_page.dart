@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:ventela_shop/components/shop_tile.dart';
 import 'package:ventela_shop/data/cart.dart';
 import 'package:ventela_shop/data/shoe.dart';
+import 'package:ventela_shop/pages/items_page.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -12,6 +13,28 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+  void addShoecart(Shoe shoe) {
+    Provider.of<Cart>(context, listen: false).addShoeCart(shoe);
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text(
+          "Succesfully added to cart!",
+        ),
+        content: const Text("Please check your cart"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text(
+              "Ok",
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(
@@ -54,9 +77,17 @@ class _ShopPageState extends State<ShopPage> {
                   "HOT PICKS🔥",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
-                Text(
-                  "See All",
-                  style: TextStyle(fontSize: 14, color: Colors.blue.shade600),
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ItemsPage(),
+                    ),
+                  ),
+                  child: Text(
+                    "See All",
+                    style: TextStyle(fontSize: 14, color: Colors.blue.shade600),
+                  ),
                 ),
               ],
             ),
@@ -72,6 +103,7 @@ class _ShopPageState extends State<ShopPage> {
                 Shoe shoe = value.getShoeList()[index];
                 return ShopTile(
                   shoe: shoe,
+                  ontap: () => addShoecart(shoe),
                 );
               },
             ),
