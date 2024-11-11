@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ventela_shop/pages/about_page.dart';
 import 'package:ventela_shop/pages/cart_page.dart';
 import 'package:ventela_shop/pages/home_page.dart';
+import 'package:ventela_shop/pages/setting_page.dart';
 
 class OpenDrawer extends StatelessWidget {
   const OpenDrawer({super.key});
@@ -9,7 +10,7 @@ class OpenDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       child: Column(
         children: [
           Padding(
@@ -29,23 +30,26 @@ class OpenDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25),
             child: ListTile(
-                leading: const Icon(
-                  Icons.home,
-                  color: Colors.black,
-                ),
-                title: const Text(
-                  "Home Page",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomePage(),
-                    ),
-                  );
-                }),
+              leading: Icon(
+                Icons.home,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+              title: Text(
+                "H O M E P A G E",
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                    fontSize: 18),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                );
+              },
+            ),
           ),
           const SizedBox(
             height: 10,
@@ -53,10 +57,13 @@ class OpenDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25),
             child: ListTile(
-                leading: const Icon(Icons.info, color: Colors.black),
-                title: const Text(
-                  "About",
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                leading: Icon(Icons.info,
+                    color: Theme.of(context).colorScheme.secondary),
+                title: Text(
+                  "A B O U T",
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                      fontSize: 18),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -68,6 +75,29 @@ class OpenDrawer extends StatelessWidget {
                   );
                 }),
           ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25),
+            child: ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+              title: Text(
+                "S E T T I N G",
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                    fontSize: 18),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SettingPage(),
+                    ));
+              },
+            ),
+          )
         ],
       ),
     );

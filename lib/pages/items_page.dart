@@ -16,7 +16,7 @@ class _ItemsPageState extends State<ItemsPage> {
   Widget build(BuildContext context) {
     return Consumer<Cart>(
       builder: (context, value, child) => Scaffold(
-        backgroundColor: const Color(0xFFD6D6D6),
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,

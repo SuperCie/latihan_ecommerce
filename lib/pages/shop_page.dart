@@ -45,7 +45,7 @@ class _ShopPageState extends State<ShopPage> {
             padding: const EdgeInsets.all(12),
             margin: const EdgeInsets.symmetric(horizontal: 25),
             decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: Colors.grey.shade200,
                 borderRadius: BorderRadius.circular(12)),
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

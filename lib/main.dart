@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ventela_shop/data/cart.dart';
 import 'package:ventela_shop/pages/start_page.dart';
+import 'package:ventela_shop/theme/theme_provider.dart';
 
 void main() {
   runApp(const VentelaShop());
@@ -12,12 +13,20 @@ class VentelaShop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => Cart(),
-      builder: (context, child) => const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: FirstPage(),
-      ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Cart(),
+          builder: (context, child) => MaterialApp(
+            theme: Provider.of<ThemeProvider>(context).themeData,
+            home: const FirstPage(),
+            debugShowCheckedModeBanner: false,
+          ),
+        ),
+      ],
     );
   }
 }

@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFD6D6D6),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       // membuat bagian drawer
       appBar: AppBar(
         backgroundColor: Colors.transparent,
